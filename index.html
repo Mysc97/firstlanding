@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="css/_bower.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+  </head>
+  <body data-bind="css: { 'modal-open': overlay() }">
+    <div id="overlay" data-bind="css: { show: overlay() }"></div>
+    <div class="center-modal" id="confirm-modal" data-bind="css: { show: confirmModal() }">
+      <div class="inside"><img class="icon" src="img/confirm-icon.png"/>
+        <h3>Confirm Items</h3>
+        <p>Please confirm that the details below are correct.</p>
+        <ul class="items-list" data-bind="foreach: getResources()">
+          <li>
+            <div class="img"><img data-bind="attr: { src: icon }"/></div>
+            <div class="right">
+              <p class="name" data-bind="text: name">Gold</p>
+              <p class="amount" data-bind="text: amount">500</p>
+            </div>
+          </li>
+        </ul>
+        <div class="row">
+          <div class="col-xs-6">
+            <button class="btn btn-sm btn-default btn-block" data-bind="click: cancelConfirmModal">Cancel</button>
+          </div>
+          <div class="col-xs-6">
+            <button class="btn btn-sm btn-success btn-block" data-bind="click: confirmItems">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="center-modal" id="loading-modal" data-bind="css: { show: loadingModal() }">
+      <div class="inside">
+        <div class="loader"></div>
+        <h3>Proccessing request...</h3>
+        <p>We are adding the items to your account.</p>
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" data-bind="style: { width: progressPercentage() }"></div>
+        </div>
+      </div>
+    </div>
+    <div class="center-modal" id="human-modal" data-bind="css: { show: humanModal() }">
+      <div class="inside">
+        <div class="loader"></div>
+        <h3>Human Verification</h3>
+        <p>Unfortunetly due to the high demand of our service we are experiencing some network issues. We now require all users to verify they are human.</p>
+        <p>Please click on the button below.</p>
+        <button class="btn btn-block btn-lg btn-success" data-bind="click: verifyConnection">Verify Connection</button>
+      </div>
+    </div>
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3"><img class="app-icon" src="img/app-icon.png"/>
+            <h1>Game of War</h1>
+            <p class="sub">Online Generator Tool</p>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div id="updates">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="inside">
+              <h3 id="update-msg" data-bind="html: updateMsg">John has generated 500 Gold!</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="generator">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="inside">
+              <h2>Generate Unlimited Gold, Silver, Stone and Wood!</h2>
+              <p class="sub">Aliquam nec metus nibh. Integer finibus aliquam magna, quis fringilla nunc maximus ac.</p>
+              <hr/>
+              <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-left">
+                  <div class="form-group">
+                    <label>Username:</label>
+                    <input class="form-control" type="text" placeholder="Enter game of war username..." data-bind="textInput: username"/>
+                  </div>
+                  <div class="resources" data-bind="foreach: resources">
+                    <div class="form-group">
+                      <label><img data-bind="attr: { src: icon }" height="15px" style="margin-right: 5px"/><span data-bind="text: name">Gold:</span></label>
+                      <input class="form-control" type="number" placeholder="Enter gold amount..." data-bind="value: amount"/>
+                    </div>
+                  </div>
+                  <button class="btn btn-lg btn-success btn-block" data-bind="attr: { disabled: !generatorReady() }, click: startGenerator">Start Generator</button><br class="clearfix"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="status-list">
+              <li><img class="icon" src="img/server-icon.png"/>
+                <p class="name">Database</p>
+                <p class="status">Running</p>
+              </li>
+              <li><img class="icon" src="img/firewall-icon.png"/>
+                <p class="name">Firewall</p>
+                <p class="status">Running</p>
+              </li>
+              <li><img class="icon" src="img/encryption-icon.png"/>
+                <p class="name">Encryption</p>
+                <p class="status">Running</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <p>&copy; Copyright 2016 - Present. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script type="text/javascript" src="js/_bower.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+  </body>
+</html>
